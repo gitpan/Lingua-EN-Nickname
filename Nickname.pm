@@ -70,7 +70,7 @@ use strict;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 use vars qw(%root %multi %match %akin);
 
-$VERSION=     '1.13';
+$VERSION=     '1.14';
 @ISA=         qw(Exporter);
 @EXPORT=      qw(nickname_eq nickroot);
 @EXPORT_OK=   qw(nickmatch nickfollow);
@@ -85,7 +85,7 @@ sub nickmatch($)
   s/\b(\w+)/\L\u$1/g if !/[a-z]/ and length $_ > 2; s/\s+//g;
   return $match{$_} if $match{$_};
   s/([^aeiouyA-Z])(ie?|e?y)$/$1E/;
-  return $match{$root{$_}} if $root{$_};
+  return $match{$root{$_}} if exists $root{$_};
   my @root= map "$match{$_}", @{$multi{$_}};
   return unless @root;
   local $"= '|';
@@ -114,7 +114,8 @@ sub nickname_eq
   my($a,$b,$regex,$match)= map 
     {my$n=$_;$n=~s/\b(\w+)/\L\u$1/g if!/[a-z]/;$n=~s/\s+//g;$n} @_;
   return 100 if $a eq $b; # trivial case 
-  return 98 if $a eq $root{$b} or $b eq $root{$a};
+  return 98 if exists $root{$b} and $a eq $root{$b};
+  return 98 if exists $root{$a} and $b eq $root{$a};
   return 95 if ( $regex= nickroot($b) and $a=~ /^($regex)$/ )
     or ( $regex= nickroot($a) and $b=~ /^($regex)$/ );
   return unless $regex= nickmatch $a;
@@ -129,7 +130,7 @@ sub nickroot($)
   s/\b(\w+)/\L\u$1/g if !/[a-z]/ and length $_ > 2; s/\s+//g;
   return $_ if $match{$_};
   s/(?<![aeiouyA-Z])(ie?|e?y)$/E/;
-  return $root{$_} if $root{$_};
+  return $root{$_} if exists $root{$_};
   local $"= '|';
   return( wantarray ? @{$multi{$_}} : "@{$multi{$_}}" ) if $multi{$_};
 }

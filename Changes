@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::EN::Nickname.
 
+20031006
+  * added hash existence checks to minimize warnings
+
 20000530
   * re-release to stay synched with Lingua::EN::Nickname
 
