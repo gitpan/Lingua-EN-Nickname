@@ -23,13 +23,17 @@ probably the same name.
 
 =over 4
 
-=item * USGenWeb Project L<http://www.usgenweb.com/researchers/nicknames.html>
+=item * USGenWeb Project 
+L<http://www.usgenweb.com/researchers/nicknames.html>
 
-=item * TNGenWeb Project L<http://www.tngenweb.usit.com/franklin/frannick.htm>
+=item * TNGenWeb Project 
+L<http://www.tngenweb.usit.com/franklin/frannick.htm>
 
-=item * Chesnut Family Pages L<http://www.users.mis.net/~chesnut/pages/nicknams.htm>
+=item * Chesnut Family Pages 
+L<http://www.users.mis.net/~chesnut/pages/nicknams.htm>
 
-=item * Ultimate Family Tree L<http://www.uftree.com/UFT/HowTos/SettingOut/nickname1.html>
+=item * Ultimate Family Tree 
+L<http://www.uftree.com/UFT/HowTos/SettingOut/nickname1.html>
 
 =back
 
@@ -37,11 +41,13 @@ probably the same name.
 
 =over 4
 
-=item * Hire a team of experts to provide a more scientific, statistically accurate Name Etymology source file.
+=item * Hire a team of experts to provide a more scientific, 
+statistically accurate Name Etymology source file.
 
 =item * Create more phoenetically-based sub-regexes.
 
-=item * Detect simple monosyllabic truncation nicknames, be less certain about them, but match more.
+=item * Detect simple monosyllabic truncation nicknames, 
+be less certain about them, but match more.
 
 =item * Pay more attention to gender.
 
@@ -63,7 +69,7 @@ use strict;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 use vars qw(%root %multi %match %akin);
 
-$VERSION=     '0.19991222';
+$VERSION=     '1.1';
 @ISA=         qw(Exporter);
 @EXPORT=      qw(nickname_eq nickroot);
 @EXPORT_OK=   qw(nickmatch nickfollow);
@@ -104,7 +110,8 @@ sub nickfollow
 
 sub nickname_eq
 {
-  my($a,$b,$regex,$match)= map {my$n=$_;$n=~s/\b(\w+)/\L\u$1/g if!/[a-z]/;$n=~s/\s+//g;$n} @_;
+  my($a,$b,$regex,$match)= map 
+    {my$n=$_;$n=~s/\b(\w+)/\L\u$1/g if!/[a-z]/;$n=~s/\s+//g;$n} @_;
   return 100 if $a eq $b; # trivial case 
   return 98 if $a eq $root{$b} or $b eq $root{$a};
   return 95 if ( $regex= nickroot($b) and $a=~ /^($regex)$/ )
