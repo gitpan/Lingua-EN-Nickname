@@ -13,15 +13,15 @@ ppmdist : ppd pure_all
 
 WriteMakefile(
   NAME	          => 'Lingua::EN::Nickname',
-  AUTHOR          => 'Brian Lalonde (brianl@sd81.k12.wa.us)',
+  AUTHOR          => 'Brian Lalonde (brian@webcoder.info)',
   VERSION_FROM    => 'Nickname.pm', 
   ABSTRACT_FROM   => 'Nickname.pm',
   BINARY_LOCATION => 'Lingua-EN-Nickname.ppm.tar.gz',
   dist            => 
   {
-    TAR      => 'c:\\winnt\\unixtool\\tar.exe',
+    TAR      => 'C:\\progra~1\\util\\tar.exe',
     TARFLAGS => 'cvf',
-    COMPRESS => 'c:\\winnt\\unixtool\\gzip.exe --best',
+    COMPRESS => 'C:\\progra~1\\util\\gzip.exe --best',
     SUFFIX   => '.gz',
   },
 );

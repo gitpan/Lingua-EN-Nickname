@@ -1,3 +1,4 @@
+
 =head1 NAME
 
 Lingua::EN::Nickname - Genealogical nickname matching (Liz=Beth)
@@ -55,7 +56,7 @@ be less certain about them, but match more.
 
 =head1 AUTHOR
 
-Brian Lalonde, E<lt>brianl@sd81.k12.wa.usE<gt>
+Brian Lalonde, E<lt>brian@webcoder.infoE<gt>
 
 =head1 SEE ALSO
 
@@ -69,7 +70,7 @@ use strict;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 use vars qw(%root %multi %match %akin);
 
-$VERSION=     '1.1';
+$VERSION=     '1.12';
 @ISA=         qw(Exporter);
 @EXPORT=      qw(nickname_eq nickroot);
 @EXPORT_OK=   qw(nickmatch nickfollow);
