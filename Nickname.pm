@@ -11,7 +11,7 @@ Lingua::EN::Nickname - Genealogical nickname matching (Liz=Beth)
   $score= nickname_eq( $firstn_0, $firstn_1 );
 
   # Full, expanded, name(s) 
-  @roots= rootname( $firstn );
+  @roots= nickroot( $firstn );
 
 =head1 DESCRIPTION
 
@@ -70,7 +70,7 @@ use strict;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 use vars qw(%root %multi %match %akin);
 
-$VERSION=     '1.12';
+$VERSION=     '1.13';
 @ISA=         qw(Exporter);
 @EXPORT=      qw(nickname_eq nickroot);
 @EXPORT_OK=   qw(nickmatch nickfollow);
