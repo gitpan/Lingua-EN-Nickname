@@ -1,6 +1,6 @@
 =head1 NAME
 
-Lingua::EN::Nickname - Genealogical nickname matching(Peggy=Midge)
+Lingua::EN::Nickname - Genealogical nickname matching (Liz=Beth)
 
 =head1 SYNOPSIS
 
@@ -63,7 +63,7 @@ use strict;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 use vars qw(%root %multi %match %akin);
 
-$VERSION=     '0.19991214';
+$VERSION=     '0.19991222';
 @ISA=         qw(Exporter);
 @EXPORT=      qw(nickname_eq nickroot);
 @EXPORT_OK=   qw(nickmatch nickfollow);
@@ -77,7 +77,7 @@ sub nickmatch($)
   local $_= shift;
   s/\b(\w+)/\L\u$1/g if !/[a-z]/ and length $_ > 2; s/\s+//g;
   return $match{$_} if $match{$_};
-  s/(?<![aeiouyA-Z])(ie?|e?y)$/E/;
+  s/([^aeiouyA-Z])(ie?|e?y)$/$1E/;
   return $match{$root{$_}} if $root{$_};
   my @root= map "$match{$_}", @{$multi{$_}};
   return unless @root;

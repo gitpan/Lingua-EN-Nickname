@@ -1,5 +1,12 @@
 Revision history for Perl extension Lingua::EN::Nickname.
 
-0.19991202
+0.19991222
+  - negative look-behind assertion replaced by character class
+	  for backwards compatibility 
+
+0.19991214
+	- re-release to fix tarball 
+
+0.19991213
 	- original release version; created by h2xs 1.19
 
