@@ -1,0 +1,8 @@
+Changes
+Makefile.PL
+MANIFEST
+Nickname.pm
+nicknames.txt
+nickhash.pl
+test.pl
+META.yml                                 Module meta-data (added by MakeMaker)
